@@ -1,7 +1,11 @@
-name = "AnnealingRollbackAPI"
-uuid = "3f8dbd83-b3d8-41db-b5ba-bb99f7499db6"
+name = "AnnealingAPI"
+uuid = "ea73c536-af4e-4c29-9508-d79bc79c0161"
 authors = ["Vasily Postnicov <shamaz.mazum@gmail.com>"]
 version = "0.1.0"
 
+[deps]
+CorrelationFunctions = "cd8c4018-4f35-43b7-8520-d042ebaeaa2d"
+
 [compat]
+CorrelationFunctions = "0.3.0"
 julia = "^1.0"
