@@ -1,0 +1,7 @@
+name = "AnnealingRollbackAPI"
+uuid = "3f8dbd83-b3d8-41db-b5ba-bb99f7499db6"
+authors = ["Vasily Postnicov <shamaz.mazum@gmail.com>"]
+version = "0.1.0"
+
+[compat]
+julia = "^1.0"
