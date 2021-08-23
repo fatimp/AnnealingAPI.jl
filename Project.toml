@@ -1,7 +1,7 @@
 name = "AnnealingAPI"
 uuid = "ea73c536-af4e-4c29-9508-d79bc79c0161"
 authors = ["Vasily Postnicov <shamaz.mazum@gmail.com>"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 CorrelationFunctions = "cd8c4018-4f35-43b7-8520-d042ebaeaa2d"

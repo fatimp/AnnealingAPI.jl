@@ -7,6 +7,18 @@ Abstract type for a rollback token returned by `update_corrfns!`.
 """
 abstract type AbstractRollbackToken end
 
+
+"""
+    SimpleRollbackToken(value, index)
+
+Create a simple rollback token which just holds an index and an old
+value at that index.
+"""
+struct SimpleRollbackToken{T, N} <: AbstractRollbackToken
+    value :: T
+    index :: CartesianIndex{N}
+end
+
 """
     update_corrfns!(tracker, value, index)
 
@@ -18,6 +30,14 @@ See also: [`rollback!`](@ref).
 """
 function update_corrfns! end
 
+function update_corrfns!(array :: AbstractArray{T, N},
+                         val,
+                         index :: CartesianIndex{N}) where {T, N}
+    token = SimpleRollbackToken(array[index], index)
+    array[index] = val
+    return token
+end
+
 """
     rollback!(tracker, token)
 
@@ -28,10 +48,12 @@ See also: [`update_corrfns!`](@ref).
 """
 function rollback! end
 
-function rollback!(array    :: AbstractArray,
-                   rollback :: AbstractRollbackToken)
+rollback!(array :: AbstractArray, rollback :: AbstractRollbackToken) =
     array[rollback.index] = 1 - array[rollback.index]
-end
+
+rollback!(array    :: AbstractArray{T, N},
+          rollback :: SimpleRollbackToken{T, N}) where {T, N} =
+    array[rollback.index] = rollback.value
 
 """
     Generic type for correlation function tracker.
