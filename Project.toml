@@ -1,11 +1,11 @@
 name = "AnnealingAPI"
 uuid = "ea73c536-af4e-4c29-9508-d79bc79c0161"
 authors = ["Vasily Postnicov <shamaz.mazum@gmail.com>"]
-version = "0.1.2"
+version = "0.1.3"
 
 [deps]
 CorrelationFunctions = "cd8c4018-4f35-43b7-8520-d042ebaeaa2d"
 
 [compat]
-CorrelationFunctions = "0.4.0"
+CorrelationFunctions = "0.4, 0.5, 0.6"
 julia = "^1.0"
