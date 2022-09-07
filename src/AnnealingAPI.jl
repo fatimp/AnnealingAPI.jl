@@ -1,6 +1,6 @@
 module AnnealingAPI
 
-using CorrelationFunctions: Directional
+using CorrelationFunctions
 
 """
 Abstract type for a rollback token returned by `update_corrfns!`.
@@ -120,9 +120,11 @@ end
 (tracked :: S2Tracker{T})(system :: AbstractArray{T}; kwargs...) where T =
     Directional.s2(system, tracked.phase; kwargs...)
 (tracked :: SSTracker{T})(system :: AbstractArray{T}; kwargs...) where T =
-    Directional.surfsurf(system, tracked.phase; kwargs...)
+    Directional.surfsurf(system, tracked.phase;
+                         edgemode = Utilities.EdgesFilterReflect(), kwargs...)
 (tracked :: SVTracker{T})(system :: AbstractArray{T}; kwargs...) where T =
-    Directional.surfvoid(system, tracked.phase; kwargs...)
+    Directional.surfvoid(system, tracked.phase;
+                         edgemode = Utilities.EdgesFilterReflect(), kwargs...)
 
 """
     tracked_data(x :: AbstractArray)
